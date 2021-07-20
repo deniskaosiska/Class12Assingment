@@ -5,7 +5,10 @@ import java.net.URL;
 import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
- class Excercise2 {
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.JsonSerializable;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.JsonSerializer;
+
+class Excercise2 {
     public static String name;
     public static void main(String[] args) {
         System.out.println("Please enter a country name");
@@ -53,14 +56,19 @@ import org.json.JSONObject;
             System.out.println(response.toString());
             //Read JSON response and print
             JSONObject myResponse = new JSONObject(response.toString());
-            JSONArray array = new JSONArray(url);
-            System.out.println("result after Reading JSON Response");
-            System.out.println("statusCode- " + myResponse.getString("statusCode"));
-            System.out.println("statusMessage- " + myResponse.getString("statusMessage"));
-            System.out.println("callingCodes- " + myResponse.getString("callingCodes"));
-            System.out.println("region- " + myResponse.getString("region"));
-            System.out.println("currencies- " + array.getJSONArray(3));
-            System.out.println("borders- " + array.getJSONArray(1));
+
+            JSONObject name = myResponse.getJSONObject('{'+"name");
+
+            String namee = name.getString("name");
+            System.out.println("region- " + namee);
+//            System.out.println("result after Reading JSON Response");
+//            System.out.println("statusCode- " + myResponse.getString("statusCode"));
+//            System.out.println("statusMessage- " + myResponse.getString("statusMessage"));
+//            System.out.println("callingCodes- " + myResponse.getString("callingCodes"));
+//            System.out.println("region- " + myResponse.getString("region"));
+//            System.out.println("currencies- " + array.getJSONArray(3));
+//            System.out.println("borders- " + array.getJSONArray(1));
+//
         } else  {
             System.out.println("Please enter re-enter a country name");
             enterCountryName();
