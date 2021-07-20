@@ -55,12 +55,11 @@ class Excercise2 {
             //print in String
             System.out.println(response.toString());
             //Read JSON response and print
-            JSONObject myResponse = new JSONObject(response.toString());
+            String data = response.toString();
+            JSONObject myResponse = new JSONObject(data);
 
-            JSONObject name = myResponse.getJSONObject('{'+"name");
-
-            String namee = name.getString("name");
-            System.out.println("region- " + namee);
+            String region = myResponse.getString("region");
+            System.out.println("region- " + region);
 //            System.out.println("result after Reading JSON Response");
 //            System.out.println("statusCode- " + myResponse.getString("statusCode"));
 //            System.out.println("statusMessage- " + myResponse.getString("statusMessage"));
